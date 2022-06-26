@@ -1,0 +1,20 @@
+a {
+    text-decoration: none; }
+  
+  .navi a:hover {
+    font-weight: bold;
+    border-bottom: 3px solid black; }
+
+.logo {
+    width: 6rem;
+    height: 4rem;
+}
+nav img:hover {
+    width: 7rem;
+    height: 5rem;
+}
+header {
+  position: sticky;
+  top: 0px;
+  z-index: 100; 
+}
