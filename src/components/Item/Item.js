@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Item = ({ id, nombre, precio, anio, imagen }) => {
+const Item = ({ juego }) => {
+  const {nombre, precio, anio, imagen} = juego;
 
 return (
     <div className="col-md-3 my-2">

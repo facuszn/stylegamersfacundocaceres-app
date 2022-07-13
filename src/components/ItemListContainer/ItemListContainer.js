@@ -13,6 +13,7 @@ const getData = new Promise((resolve, reject) => {
   }
   }, 2000);
   });
+  
 const ItemListContainer = ({ greeting }) => {
   const [juegos, setJuegos] = useState([]);
   useEffect(() => {
@@ -25,16 +26,17 @@ const ItemListContainer = ({ greeting }) => {
     });
     }, []);
   return (
-    /*<div>
+    <div>
       {greeting}
-      <ItemCount
+      <div className='container'><ItemList items={juegos} /></div>
+    </div>
+   
+   /*<ItemCount
       stock={7}
       initial={1}
       onAdd={(n) => alert(`Agregados ${n} productos`)}
       />
-      <ItemList items={juegos} />
-    </div>*/
-    <div className='container'><ItemList items={juegos} /></div>
+      <ItemList items={juegos} />*/
   )
 }
 export default ItemListContainer
