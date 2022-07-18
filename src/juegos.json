@@ -4,71 +4,79 @@
         "nombre": "FIFA 22",
         "precio": 12400,
         "anio": "(2021)",
-        "genero": "Deportes",
+        "idcategoria" : 1,
+        "categoria": "Deportes",
         "descripcion": "EA SPORTS™ FIFA 22 acerca aún más el juego a la realidad gracias a mejoras significativas en la jugabilidad y una nueva temporada de novedades en todos los modos.",
-        "imagen":"caratulas/ps5-fifa.jpg"
+        "imagen":"../caratulas/ps5-fifa.jpg"
     },
     {
         "id": 2, 
         "nombre": "NBA 2K22", 
         "precio": 11000,
         "anio": "(2021)",
-        "genero": "Deportes",
+        "idcategoria" : 1,
+        "categoria": "Deportes",
         "descripcion": "NBA 2K22 pone todo el universo del básquet en tus manos. Juega ahora en entornos reales de la NBA y la WNBA contra equipos y jugadores auténticos. Construye tu propio equipo de ensueño en MyTEAM con las estrellas de hoy y las leyendas de ayer. Vive tu propio viaje profesional en MyCAREER y experimenta tu ascenso personal a la NBA. Pon a prueba tus habilidades gerenciales como un poderoso ejecutivo en MyGM y MyLEAGUE. Cualquiera, en cualquier lugar, puede encestar en NBA 2K22.", 
-        "imagen": "caratulas/ps5-nba2k22.jpg"
+        "imagen": "../caratulas/ps5-nba2k22.jpg"
     },
     {
         "id": 3, 
         "nombre": "Gran Turismo 7", 
         "precio": 7000, 
         "anio": "(2021)",
-        "genero": "Deportes", 
+        "idcategoria" : 1,
+        "categoria": "Deportes", 
         "descripcion": "Gran Turismo 7 es un videojuego de simulación de carreras de 2022 desarrollado por Polyphony Digital y publicado por Sony Interactive Entertainment. El juego es la octava entrega principal de la serie Gran Turismo.",
-        "imagen": "caratulas/ps5-gt.jpg"
+        "imagen": "../caratulas/ps5-gt.jpg"
     },
     {
         "id": 4, 
         "nombre": "Spider Man", 
         "precio": 7500, 
         "anio": "(2021)",
-        "genero": "Aventura",
+        "idcategoria" : 2,
+        "categoria": "Aventura",
         "descripcion": "Experimenta el nacimiento de Miles Morales a medida que el nuevo héroe domina nuevos, increíbles y explosivos poderes para convertirse en su propio Spider-Man.", 
-        "imagen": "caratulas/ps5-spider.jpg"
+        "imagen": "../caratulas/ps5-spider.jpg"
     },
     {
         "id": 5, 
         "nombre": "Mortal Kombat 11",
         "precio": 8000, 
         "anio": "(2020)",
-        "genero": "Accion",  
+        "idcategoria" : 3,
+        "categoria": "Accion",  
         "descripcion": "Continúa la legendaria saga de más de 25 años con una nueva historia cinemática. Los jugadores podrán jugar con una gran variedad de personajes del pasado y el presente en una nueva historia que desafía al tiempo para enfrentar a Raiden contra Kronika, el Guardián del Tiempo que creó la existencia en los albores de la historia",
-        "imagen": "caratulas/ps5-mortalkombat.jpg"
+        "imagen": "../caratulas/ps5-mortalkombat.jpg"
     },
     {
         "id": 6, 
         "nombre": "Ghost Of Tsushima", 
         "precio": 10000, 
-        "anio": "(2022)", 
-        "genero": "Aventura",
+        "anio": "(2022)",
+        "idcategoria" : 2, 
+        "categoria": "Aventura",
         "descripcion": "Forja un nuevo camino y emplea tácticas de guerra poco convencionales para liberar Tsushima. Desafía a tus enemigos con tu katana, domina el arco para eliminar las amenazas lejanas, aprende tácticas de sigilo para emboscar a los enemigos y explora una nueva historia en la Isla Iki.",
-        "imagen": "caratulas/ps5-ghost.jpg"
+        "imagen": "../caratulas/ps5-ghost.jpg"
     },
     {
         "id": 7, 
         "nombre": "Sniper Ghost Warrior 2", 
         "precio": 10000, 
         "anio": "(2022)",
-        "genero": "Aventura", 
+        "idcategoria" : 2,
+        "categoria": "Aventura", 
         "descripcion": "Sniper: Ghost Warrior 2 es el único shooter moderno en primera persona multiplataforma diseñado exclusivamente para la experiencia del francotirador. Lleva la precisión de tiro al blanco de su predecesor a nuevas y emocionantes alturas, ofreciendo desafíos de francotiradores más diversos; un sistema de inteligencia artificial reconstruido y la emocionante precisión que hizo del original un gran éxito, vendiendo 3 millones de copias en todo el mundo.",
-        "imagen": "caratulas/ps5-sniper.jpg"
+        "imagen": "../caratulas/ps5-sniper.jpg"
     },
     {
         "id": 8, 
         "nombre": "Death Stranding", 
         "precio": 9000, 
         "anio": "(2021)",
-        "genero": "Aventura", 
+        "idcategoria" : 2,
+        "categoria": "Aventura", 
         "descripcion": "Death Stranding es un título de acción, aventura y exploración en mundo abierto de ambientación postapocalíptica. Se trata del nuevo videojuego de Hideo Kojima, padre de Metal Gear y Snatcher, una enigmática obra que se define como el primer juego de su género, ya que incluye una serie de mecánicas, detalles y aspectos que lo alejan de otros videojuegos similares.",
-        "imagen": "caratulas/ps5-death.jpg"
+        "imagen": "../caratulas/ps5-death.jpg"
     }
 ]

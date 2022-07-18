@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import ItemList from '../ItemList/ItemList';
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+//import ItemCount from '../ItemCount/ItemCount';
 import juegos from '../../juegos.json';
-
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 const getData = new Promise((resolve, reject) => {
+  
   let afterPromises = true;  
   setTimeout(() => {
     if (afterPromises) {
@@ -13,26 +15,26 @@ const getData = new Promise((resolve, reject) => {
   }
   }, 2000);
   });
+  
+const ItemDetailContainer = () => {
+  let params = useParams();
+  const [juegos, setJuegos] = useState([]);
 
-  const ItemDetailContainer = (items) => {
-    const [juegos, setJuegos] = useState([]);
-    useEffect(() => {
-      getData
+  useEffect(() => {
+    getData
       .then((data) => {
-      setJuegos(data);
+      setJuegos(data[params.id - 1]);
       })
       .catch((err) => {
       console.log(err);
       });
-      }, []);
-      console.log(juegos)
-    return (
-    
-     <div className='container'><ItemList items={juegos}/></div>
-    )
-  }  
-
-
-export default ItemDetailContainer
+  }, [params.id - 1]);
+  return (
+    <div className='container'>
+      <ItemDetail juegos={juegos} />
+    </div>   
+  );
+}
+export default ItemDetailContainer;
 
 

@@ -1,10 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+//import { Link } from "react-router-dom";
 
 const Item = ({ juego }) => {
-  const {nombre, precio, anio, imagen} = juego;
+  const {id, nombre, precio, anio, imagen} = juego;
 
 return (
-    <div className="col-md-3 my-2">
+  <div className="col-md-3 my-2">
+  
+    
     <div className="card">
         <img src={imagen} className="card-img-top" alt={nombre} />
     <div className="card-body">
@@ -15,6 +19,7 @@ return (
       <p className="card-text">
         $ {precio}
       </p>
+      <Link to={"juego/" + id}>
       <a
         href="index.html"
         className="btn btn-primary"
@@ -22,9 +27,12 @@ return (
         title="Ver detalles">
         Ver detalles
       </a>
+      </Link>
     </div>
     </div>
+     
     </div>
+     
   );
 };
 
