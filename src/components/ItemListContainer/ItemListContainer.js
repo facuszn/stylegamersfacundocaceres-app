@@ -30,13 +30,7 @@ const ItemListContainer = ({ greeting }) => {
       {greeting}
       <div className='container'><ItemList items={juegos} /></div>
     </div>
-   
-   /*<ItemCount
-      stock={7}
-      initial={1}
-      onAdd={(n) => alert(`Agregados ${n} productos`)}
-      />
-      <ItemList items={juegos} />*/
+
   )
 }
 export default ItemListContainer
