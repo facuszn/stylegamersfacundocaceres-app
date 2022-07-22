@@ -15,18 +15,19 @@ const getData = new Promise((resolve, reject) => {
 });
 
 const ItemDetailContainer = () => {
+  
   let params = useParams();
   const [juegos, setJuegos] = useState([]);
 
   useEffect(() => {
     getData
       .then((data) => {
-        setJuegos(data[params.id - 1]);
+        setJuegos(data[params.id -1]);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [params.id - 1]);
+  }, [params.id]);
   return (
     <div className="container">
       <ItemDetail juegos={juegos} />

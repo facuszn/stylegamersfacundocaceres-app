@@ -21,6 +21,7 @@ const App = () => {
           />
           <Route path="/juego/:id" element={<ItemDetailContainer />} />
           <Route path="/categoria/:categoria" element={<CategoryList />} />
+          <Route path="/categoria/aventura" element={<CategoryList />} />
           <Route
             path="*"
             element={
