@@ -20,12 +20,12 @@ const CategoryList = ({ greeting }) => {
   useEffect(() => {
     getData
       .then((data) => {
-        setJuegos(data[params.idcategoria]);
+        setJuegos(data[params.categoria]);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [params.idcategoria]);
+  }, [params.categoria]);
   return (
     <div>
       {greeting}

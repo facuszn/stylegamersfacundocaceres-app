@@ -40,9 +40,6 @@ const NavBar = () => {
               Sobre Nosotros
             </a>
             <a className="nav-link" href="index.html">
-              Carrito de Compras
-            </a>
-            <a className="nav-link" href="index.html">
               FAQs
             </a>
             <a className="nav-link" href="index.html">
@@ -72,7 +69,9 @@ const NavBar = () => {
             </li>
           </div>
         </div>
+        <Link to={"/carrito"}>
         <CartWidget />
+        </Link>
       </div>
     </nav>
   );

@@ -18,11 +18,13 @@ const ItemDetailContainer = () => {
   
   let params = useParams();
   const [juegos, setJuegos] = useState([]);
+  
 
   useEffect(() => {
     getData
       .then((data) => {
         setJuegos(data[params.id -1]);
+        
       })
       .catch((err) => {
         console.log(err);

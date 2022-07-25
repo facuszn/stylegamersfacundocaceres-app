@@ -1,9 +1,21 @@
-import React from "react";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
-import { Link } from "react-router-dom";
+import { CartContext } from "../cartContext/cartContext";
+//import { Link } from "react-router-dom";
 
 const ItemDetail = ({ juegos }) => {
   const { nombre, precio, anio, categoria, descripcion, imagen } = juegos;
+  const [cantidad, setCantidad] = useState(1);
+  const contexto = useContext(CartContext);
+  const Navigate = useNavigate();
+  const actualizarCantidad = (valor) => {
+    setCantidad(valor);
+  };
+  const comprar = () => {
+    contexto.agregarItem(juegos, cantidad);
+    Navigate("/carrito");
+  };
 
   return (
     <div className="card mb-3">
@@ -19,15 +31,20 @@ const ItemDetail = ({ juegos }) => {
             <h6 className="card-title text-start">Precio: $ {precio}</h6>
             <h6 className="card-title text-start">Descripción:</h6>
             <p className="card-text text-start">{descripcion}</p>
-            <Link to="/carrito">
-              <div className="mt-5 pt-5 mr-5 text-end">
-                <ItemCount
-                  stock={7}
-                  initial={1}
-                  onAdd={(n) => alert(`Agregados ${n} productos`)}
-                />
-              </div>
-            </Link>
+            <div className="mt-5 pt-5 mr-5 text-end">
+              <ItemCount
+                initial={1}
+                min={1}
+                max={7}
+                onAdd={actualizarCantidad}
+              />
+              <button
+                className="btn btn-primary mx-2 text-center"
+                onClick={comprar}
+              >
+                Agregar al carrito
+              </button>
+            </div>
           </div>
         </div>
       </div>
