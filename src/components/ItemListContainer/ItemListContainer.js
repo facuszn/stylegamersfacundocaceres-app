@@ -1,29 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import ItemList from '../ItemList/ItemList';
-import juegos from '../../juegos.json';
-
-const getData = new Promise((resolve, reject) => {
-  let afterPromises = true;
-  setTimeout(() => {
-    if (afterPromises) {
-      resolve(juegos);
-    } else {
-      reject("Failed to get data");
-    }
-  }, 2000);
-});
+import React, { useEffect, useState } from "react";
+import ItemList from "../ItemList/ItemList";
+import { useParams } from "react-router-dom";
+import { getProducts } from "../../FireBase/FireBase";
 
 const ItemListContainer = ({ greeting }) => {
   const [juegos, setJuegos] = useState([]);
+  console.log("juegos: ", juegos);
+  const { categoryId } = useParams();
+  console.log("catergoriaID: ", categoryId);
+
   useEffect(() => {
-    getData
-      .then((data) => {
-        setJuegos(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getProducts().then((snapshot) => {
+      setJuegos(
+        snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        })
+      );
+    });
   }, []);
+
   return (
     <div>
       {greeting}

@@ -1,35 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import juegos from "../../juegos.json";
+import { getProductById } from "../../FireBase/FireBase";
 import ItemDetail from "../ItemDetail/ItemDetail";
 
-const getData = new Promise((resolve, reject) => {
-  let afterPromises = true;
-  setTimeout(() => {
-    if (afterPromises) {
-      resolve(juegos);
-    } else {
-      reject("Failed to get data");
-    }
-  }, 2000);
-});
-
 const ItemDetailContainer = () => {
-  
-  let params = useParams();
   const [juegos, setJuegos] = useState([]);
+  const { id } = useParams();
   
-
   useEffect(() => {
-    getData
-      .then((data) => {
-        setJuegos(data[params.id -1]);
-        
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [params.id]);
+    getProductById(id)
+    .then((product) => setJuegos(product))
+    .catch((error) => {
+      console.log(error);
+    });
+    }, [id]);
+
   return (
     <div className="container">
       <ItemDetail juegos={juegos} />

@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../cartContext/cartContext";
-//import { Link } from "react-router-dom";
 
 const ItemDetail = ({ juegos }) => {
   const { nombre, precio, anio, categoria, descripcion, imagen } = juegos;

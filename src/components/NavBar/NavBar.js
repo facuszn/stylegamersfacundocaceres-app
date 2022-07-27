@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './NavBar.css';
 import CartWidget from '../CartWidget/CartWidget';
 
@@ -20,32 +20,36 @@ const NavBar = () => {
         </button>
         {/*Logo*/}
         <Link to="/">
-          <a className="navbar-brand" href="index.html">
+          <ul className="navbar-brand">
             <h2>Style Gamers Shop</h2>
-          </a>
+          </ul>
         </Link>
         <div
           className="collapse navbar-collapse justify-content-end"
           id="navbarNavAltMarkup"
         >
           <div className="navbar-nav navi px-2">
-            <a
-              className="nav-link active"
-              aria-current="page"
-              href="index.html"
-            >
-              Inicio
-            </a>
-            <a className="nav-link" href="index.html">
+            <Link to="/">
+              <ul className="nav-link active" aria-current="page">
+                Inicio
+              </ul>
+            </Link>
+            <Link to="/">
+            <ul className="nav-link active" aria-current="page">
               Sobre Nosotros
-            </a>
-            <a className="nav-link" href="index.html">
+              </ul>
+            </Link>
+            <Link to="/">
+            <ul className="nav-link active" aria-current="page">
               FAQs
-            </a>
-            <a className="nav-link" href="index.html">
+              </ul>
+            </Link>
+            <Link to="/">
+            <ul className="nav-link active" aria-current="page">
               Contacto
-            </a>
-            <li className="nav-item dropdown">
+              </ul>
+            </Link>
+            <ul className="nav-item dropdown navi" aria-current="page">
               <li
                 className="nav-link dropdown-toggle"
                 id="navbarDropdown"
@@ -56,24 +60,31 @@ const NavBar = () => {
                 Categorias
               </li>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <Link to={"categorias/deportes"}>
-                  <li><div className="dropdown-item">Deportes</div></li>
-                </Link>
-                <Link to={"categorias/aventura"}>
-                  <li><div className="dropdown-item">Aventura</div></li>
-                </Link>
-                <Link to={"categorias/accion"}>
-                  <li><div className="dropdown-item">Acción</div></li>
-                </Link>
+              <NavLink to={"/categoria/deportes"}>
+                  <li>
+                    <div className="dropdown-item">Deportes</div>
+                  </li>
+              </NavLink>
+                <NavLink to={"categoria/aventura"}>
+                  <li>
+                    <div className="dropdown-item">Aventura</div>
+                  </li>
+                </NavLink>
+                <NavLink to={"categoria/accion"}>
+                  <li>
+                    <div className="dropdown-item">Acción</div>
+                  </li>
+                </NavLink>
               </ul>
-            </li>
+            </ul>
           </div>
         </div>
         <Link to={"/carrito"}>
-        <CartWidget />
+          <CartWidget />
         </Link>
       </div>
     </nav>
   );
 };
 export default NavBar;
+

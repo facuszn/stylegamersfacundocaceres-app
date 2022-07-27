@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CartProvider } from "./components/cartContext/cartContext";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import CategoryList from "./components/CategoryList/CategoryList";
 import React from "react";
 import Cart from "./components/Cart/Cart";
-import { CartProvider } from "./components/cartContext/cartContext";
 import "./App.css";
+
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
               }
             />
             <Route path="/juego/:id" element={<ItemDetailContainer />} />
-            <Route path="/categoria/:categoria" element={<CategoryList />} />
+            <Route path="/categoria/:categoryId" element={<ItemListContainer greeting={"ESTOY EN CATEGORIAS"} />} />
             <Route
               path="*"
               element={

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-//import { Link } from "react-router-dom";
 
 const Item = ({ juego }) => {
   const {id, nombre, precio, anio, imagen} = juego;
@@ -20,13 +19,13 @@ return (
         $ {precio}
       </p>
       <Link to={"juego/" + id}>
-      <a
-        href="index.html"
+      <ul
+        
         className="btn btn-primary"
         id="button"
         title="Ver detalles">
         Ver detalles
-      </a>
+      </ul>
       </Link>
     </div>
     </div>
