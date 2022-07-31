@@ -17,19 +17,27 @@ const App = () => {
           <Routes>
             <Route
               path="/"
+              exact
               element={
                 <ItemListContainer greeting={"Bienvenidos a mi Tienda!"} />
               }
             />
-            <Route path="/juego/:id" element={<ItemDetailContainer />} />
+            <Route 
+              path="/juego/:id"
+              exact
+              element={<ItemDetailContainer />} />
             <Route path="/categoria/:categoryId" element={<ItemListContainer greeting={"ESTOY EN CATEGORIAS"} />} />
             <Route
               path="*"
+              exact
               element={
                 <ItemListContainer greeting={"Bienvenidos a mi Tienda!"} />
               }
             />
-            <Route path="/carrito" element={<Cart />} />
+            <Route
+              path="/carrito"
+              exact
+              element={<Cart />} />
           </Routes>
         </div>
       </BrowserRouter>

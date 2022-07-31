@@ -10,7 +10,7 @@ const ItemListContainer = ({ greeting }) => {
   console.log("catergoriaID: ", categoryId);
 
   useEffect(() => {
-    getProducts().then((snapshot) => {
+    getProducts(categoryId).then((snapshot) => {
       setJuegos(
         snapshot.docs.map((doc) => {
           return {
@@ -20,7 +20,7 @@ const ItemListContainer = ({ greeting }) => {
         })
       );
     });
-  }, []);
+  }, [categoryId]);
 
   return (
     <div>

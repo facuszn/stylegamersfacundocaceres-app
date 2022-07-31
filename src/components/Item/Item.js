@@ -18,7 +18,7 @@ return (
       <p className="card-text">
         $ {precio}
       </p>
-      <Link to={"juego/" + id}>
+      <Link to={"/juego/" + id}>
       <ul
         
         className="btn btn-primary"
