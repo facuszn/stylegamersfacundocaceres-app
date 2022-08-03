@@ -1,48 +1,30 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CartProvider } from "./components/cartContext/cartContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartContextProvider from "./CartContext/CartContext";
 import NavBar from "./components/NavBar/NavBar";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import Footer from "./components/Footer/Footer";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
-import React from "react";
 import Cart from "./components/Cart/Cart";
-import "./App.css";
 
-
-const App = () => {
+function App() {
   return (
-    <CartProvider>
+    <CartContextProvider>
       <BrowserRouter>
-        <div className="App">
-          <NavBar />
-          <Routes>
-            <Route
-              path="/"
-              exact
-              element={
-                <ItemListContainer greeting={"Bienvenidos a mi Tienda!"} />
-              }
-            />
-            <Route 
-              path="/juego/:id"
-              exact
-              element={<ItemDetailContainer />} />
-            <Route path="/categoria/:categoryId" element={<ItemListContainer greeting={"ESTOY EN CATEGORIAS"} />} />
-            <Route
-              path="*"
-              exact
-              element={
-                <ItemListContainer greeting={"Bienvenidos a mi Tienda!"} />
-              }
-            />
-            <Route
-              path="/carrito"
-              exact
-              element={<Cart />} />
-          </Routes>
-        </div>
+        <NavBar />
+        <Routes>
+          <Route path="/" exact element={<ItemListContainer />} />
+          <Route
+            path="/category/:idCategory"
+            exact
+            element={<ItemListContainer />}
+          />
+          <Route path="/item/:id" exact element={<ItemDetailContainer />} />
+          <Route path="/cart" exact element={<Cart />} />
+        </Routes>
+        <Footer />
       </BrowserRouter>
-    </CartProvider>
+    </CartContextProvider>
   );
-};
+}
 
 export default App;

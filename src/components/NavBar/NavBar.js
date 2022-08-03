@@ -1,90 +1,56 @@
-import React from 'react'
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import './NavBar.css';
-import CartWidget from '../CartWidget/CartWidget';
+import CartWidget from "./CartWidget";
+import "./NavBar.css";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-md navbar-light shadow-sm  mb-1 bg-body roundedsticky-top">
-      <div className="container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-        {/*Logo*/}
-        <Link to="/">
-          <ul className="navbar-brand">
-            <h2>Style Gamers Shop</h2>
+    <header>
+      <nav>
+        <div className="navbar navbar-expand-md navbar-light shadow-sm  mb-1 bg-light roundedsticky-top">
+          <Link to="/">
+            <div className="text-center">
+              <h1 id="h1">
+                <span>S</span>
+                <span>T</span>
+                <span>Y</span>
+                <span>L</span>
+                <span>E</span>
+                <span> </span>
+                <span>G</span>
+                <span>A</span>
+                <span>M</span>
+                <span>E</span>
+                <span>R</span>
+                <span>S</span>
+              </h1>
+            </div>
+          </Link>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/cart">
+                <CartWidget />
+              </Link>
+            </li>
           </ul>
-        </Link>
-        <div
-          className="collapse navbar-collapse justify-content-end"
-          id="navbarNavAltMarkup"
-        >
-          <div className="navbar-nav navi px-2">
-            <Link to="/">
-              <ul className="nav-link active" aria-current="page">
-                Inicio
-              </ul>
-            </Link>
-            <Link to="/">
-            <ul className="nav-link active" aria-current="page">
-              Sobre Nosotros
-              </ul>
-            </Link>
-            <Link to="/">
-            <ul className="nav-link active" aria-current="page">
-              FAQs
-              </ul>
-            </Link>
-            <Link to="/">
-            <ul className="nav-link active" aria-current="page">
-              Contacto
-              </ul>
-            </Link>
-            <ul className="nav-item dropdown navi" aria-current="page">
-              <li
-                className="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="true"
-              >
-                Categorias
-              </li>
-              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-              <NavLink to={"/categoria/deportes"}>
-                  <li>
-                    <div className="dropdown-item">Deportes</div>
-                  </li>
-              </NavLink>
-                <NavLink to={"categoria/aventura"}>
-                  <li>
-                    <div className="dropdown-item">Aventura</div>
-                  </li>
-                </NavLink>
-                <NavLink to={"categoria/accion"}>
-                  <li>
-                    <div className="dropdown-item">Acción</div>
-                  </li>
-                </NavLink>
-              </ul>
-            </ul>
-          </div>
         </div>
-        <Link to={"/carrito"}>
-          <CartWidget />
-        </Link>
-      </div>
-    </nav>
+        <ul className="nav">
+          <li>
+            <NavLink to="/category/deportes">Deportes</NavLink>
+          </li>
+          <li>
+            <NavLink to="/category/aventura">Aventura</NavLink>
+          </li>
+          <li>
+            <NavLink to="/category/accion">Accion</NavLink>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
-export default NavBar;
 
+export default NavBar;

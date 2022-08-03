@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../FireBase/FireBase";
 import ItemDetail from "../ItemDetail/ItemDetail";
+import Loading from "../Loading/Loading";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = () => {
-  const [juegos, setJuegos] = useState([]);
+  const [item, setItem] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  
+
   useEffect(() => {
-    getProductById(id)
-    .then((product) => setJuegos(product))
-    .catch((error) => {
-      console.log(error);
-    });
-    }, [id]);
+    const db = getFirestore();
+    const queryDb = doc(db, "items", id);
+    getDoc(queryDb)
+      .then((resp) => setItem({ id: resp.id, ...resp.data() }))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, [id]);
 
   return (
-    <div className="container">
-      <ItemDetail juegos={juegos} />
+    <div className="detailContainer">
+      {loading ? <Loading /> : <ItemDetail item={item} />}
     </div>
   );
 };
+
 export default ItemDetailContainer;

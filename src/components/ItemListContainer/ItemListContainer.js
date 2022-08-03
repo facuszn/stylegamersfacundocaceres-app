@@ -1,34 +1,38 @@
-import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../../FireBase/FireBase";
+import ItemList from "../ItemList/ItemList";
+import Loading from "../Loading/Loading";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
+import "./ItemListContainer.css";
 
-const ItemListContainer = ({ greeting }) => {
-  const [juegos, setJuegos] = useState([]);
-  console.log("juegos: ", juegos);
-  const { categoryId } = useParams();
-  console.log("catergoriaID: ", categoryId);
+const ItemListContainer = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { idCategory } = useParams();
+  console.log(products);
 
   useEffect(() => {
-    getProducts(categoryId).then((snapshot) => {
-      setJuegos(
-        snapshot.docs.map((doc) => {
-          return {
-            id: doc.id,
-            ...doc.data(),
-          };
-        })
-      );
-    });
-  }, [categoryId]);
+    const db = getFirestore();
+    const queryCollection = idCategory
+      ? query(collection(db, "items"), where("categoria", "==", idCategory))
+      : collection(db, "items");
+    getDocs(queryCollection)
+      .then((resp) =>
+        setProducts(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
+      )
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, [idCategory]);
 
   return (
-    <div>
-      {greeting}
-      <div className="container">
-        <ItemList items={juegos} />
-      </div>
-    </div>
+    <main>{loading ? <Loading /> : <ItemList products={products} />}</main>
   );
 };
+
 export default ItemListContainer;

@@ -1,13 +1,15 @@
-import React from 'react';
-import Item from '../Item/Item';
+import React, { memo } from "react";
+import Item from "../Item/Item";
+import "./ItemList.css";
 
-const ItemList = ({items}) => {
+const ItemList = memo(({ products }) => {
   return (
-    <div className='row'>
-        {items.map((juego) => (
-        <Item key={juego.id} juego={juego}/> 
- ))}
-  </div>
+    <section>
+      {products.map((product) => (
+        <Item product={product} key={product.id} />
+      ))}
+    </section>
   );
-};
+});
+
 export default ItemList;

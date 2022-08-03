@@ -1,52 +1,46 @@
-import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCartContext } from "../../CartContext/CartContext";
 import ItemCount from "../ItemCount/ItemCount";
-import { CartContext } from "../cartContext/cartContext";
 
-const ItemDetail = ({ juegos }) => {
-  const { nombre, precio, anio, categoria, descripcion, imagen } = juegos;
-  const [cantidad, setCantidad] = useState(1);
-  const contexto = useContext(CartContext);
-  const Navigate = useNavigate();
-  const actualizarCantidad = (valor) => {
-    setCantidad(valor);
-  };
-  const comprar = () => {
-    contexto.agregarItem(juegos, cantidad);
-    Navigate("/carrito");
+const ItemDetail = ({ item }) => {
+  const [cart, setCart] = useState(true);
+
+  const { addItem } = useCartContext();
+
+  const { id, nombre, descripcion, imagen, precio, stock } = item;
+
+  const onAdd = (count) => {
+    setCart(false);
+    addItem({ ...item, quantity: count });
   };
 
   return (
-    <div className="card mb-3">
-      <div className="row g-0">
-        <div className="col-md-5">
-          <img src={imagen} className="img-fluid rounded-start" alt={nombre} />
+    <div key={id} className="container">
+      <div className="row mt-5">
+        <div className="imgDetail">
+          <img src={imagen} alt={nombre} />
         </div>
-        <div className="col-md-7">
-          <div className="card-body">
-            <h3 className="card-title">{nombre}</h3>
-            <h6 className="card-title text-start">Año: {anio}</h6>
-            <h6 className="card-title text-start">Categoria: {categoria}</h6>
-            <h6 className="card-title text-start">Precio: $ {precio}</h6>
-            <h6 className="card-title text-start">Descripción:</h6>
-            <p className="card-text text-start">{descripcion}</p>
-            <div className="mt-5 pt-5 mr-5 text-end">
-              <ItemCount
-                initial={1}
-                min={1}
-                max={7}
-                onAdd={actualizarCantidad}
-              />
-              <button
-                className="btn btn-primary mx-2 text-center"
-                onClick={comprar}
-              >
-                Agregar al carrito
+        <div>
+          <h3 className="titleDetail">{nombre}</h3>
+          <p>{descripcion}</p>
+          <h4 className="priceDetail">${precio}</h4>
+          {cart ? (
+            <ItemCount stock={stock} initial={1} onAdd={onAdd} />
+          ) : (
+            <Link to="/cart">
+              <button className="btn m-2" id="button">
+                Ir al carrito
               </button>
-            </div>
-          </div>
+            </Link>
+          )}
         </div>
       </div>
+      <Link to="/">
+        <button className="btn m-2" id="button-red">
+          Seguir Comprando
+        </button>
+      </Link>
     </div>
   );
 };
