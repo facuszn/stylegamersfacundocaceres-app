@@ -47,6 +47,9 @@ npm install
 ```
 npm start
 ```
+## Simulación de compra:
+
+![GIF](gif.gif)
 
 ## Información de contacto:
 
